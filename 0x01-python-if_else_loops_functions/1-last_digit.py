@@ -13,7 +13,7 @@ if number >= 0:
         print("Last digit of {} is {} and\
  is less than 6 and not 0".format(number, lastdigs))
 else:
-    lastdigsneg = -number  
+    lastdigsneg = -number
     if lastdigsneg % 10 == 0:
         print("Last digit of {} is {} and\
  is 0".format(number, -(lastdisgneg % 10)))

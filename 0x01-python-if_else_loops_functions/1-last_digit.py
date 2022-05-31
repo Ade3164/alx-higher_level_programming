@@ -1,22 +1,23 @@
 #!/usr/bin/python3
 import random
 number = random.randint(-10000, 10000)
-lastdig = number % 10
+lastdigs = number % 10
 if number >= 0:
-    if lastdig > 5:
+    if lastdigs > 5:
         print("Last digit of {} is {} and\
- is greater than 5".format(number, lastdig))
-    elif lastdig == 0:
+ is greater than 5".format(number, lastdigs))
+    elif lastdigs == 0:
         print("Last digit of {} is {} and\
- is 0".format(number, lastdig))
+ is 0".format(number, lastdigs))
     else:
         print("Last digit of {} is {} and\
- is less than 6 and not 0".format(number, lastdig))
+ is less than 6 and not 0".format(number, lastdigs))
 else:
-    lastdigneg = -number  # el modulo de un numero negativo es diferente
-    if lastdigneg % 10 == 0:
+    lastdigsneg = -number  
+    if lastdigsneg % 10 == 0:
         print("Last digit of {} is {} and\
- is 0".format(number, -(lastdigneg % 10)))
+ is 0".format(number, -(lastdisgneg % 10)))
     else:
         print("Last digit of {} is {} and\
- is less than 6 and not 0".format(number, -(lastdigneg % 10)))
+ is less than 6 and not 0".format(number, -(lastdigsneg % 10)))
+

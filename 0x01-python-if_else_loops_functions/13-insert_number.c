@@ -1,41 +1,44 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
+#include <stdlib.h>
+#include <unistd.h>
+
 /**
- * insert_node - insert a number to sorted linked list
- * @head: pointer point to the head of list
- * @number: number need to insert
- * Return: return a pointer of the list
+ * insert_node - inserts a number in an ordered linked list
+ * @head: double pointer to the linked list
+ * @number: number to insert in the new node
+ *
+ * Return: address of the new node, or NULL
  */
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *current = *head, *new = NULL, *prev = *head;
+	listint_t *current = *head;
+	listint_t *new = NULL;
+	listint_t *temp = NULL;
 
-	if (*head == NULL || number <= current->n) 
+	if (!head)
+		return (NULL);
+
+	new = malloc(sizeof(listint_t));
+	if (!new)
+		return (NULL);
+	new->n = number;
+	new->next = NULL;
+
+	if (!*head || (*head)->n > number)
 	{
-		new = malloc(sizeof(listint_t));
-		if (new == NULL)
-			return (NULL);
-		new->n = number;
 		new->next = *head;
-		*head = new;
-		return (new);
+		return (*head = new);
 	}
-	while (current)
+	else
 	{
-		if (number <= current->n)
+		while (current && current->n < number)
 		{
-			new = malloc(sizeof(listint_t));
-			if (new == NULL)
-				return (NULL);
-			new->n = number;
-			prev->next = new;
-			new->next = current;
-			return (new);
+			temp = current;
+			current = current->next;
 		}
-		prev = current;
-		current = current->next;
+		temp->next = new;
+		new->next = current;
 	}
-	new = add_nodeint_end(&prev, number);
+
 	return (new);
 }

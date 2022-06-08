@@ -1,35 +1,14 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    roman_numbers = [1, 5, 10, 50, 100, 500, 1000]
-    roman_letter = ['I', 'V', 'X', 'L', 'C', 'D', 'M']
-    if roman_string is None or type(roman_string) is not str:
-        return 0
-    integer = 0
-    lenght = len(roman_string)
-    for i, number in enumerate(roman_string):
-        for x, letter in enumerate(roman_letter):
-            if number == letter:
-                if lenght == i + 1:
-                    integer = integer + roman_numbers[x]
-                    break
-                elif letter == 'D':
-                        if roman_string[i + 1] == roman_letter[x + 1]:
-                            integer = integer - roman_numbers[x]
-                            break
-                        else:
-                            integer = integer + roman_numbers[x]
-                            break
-                elif letter == "M":
-                        integer = integer + roman_numbers[x]
-                        break
-                else:
-                    if roman_string[i + 1] == roman_letter[x + 1]:
-                        integer = integer - roman_numbers[x]
-                        break
-                    elif roman_string[i + 1] == roman_letter[x + 2]:
-                        integer = integer - roman_numbers[x]
-                        break
-                    else:
-                        integer = integer + roman_numbers[x]
-                        break
-    return integer
+    val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    res = 0
+    p = 0
+
+    if type(roman_string) is str and roman_string:
+        for c in range(len(roman_string) - 1, -1, -1):
+            if val[roman_string[c]] >= p:
+                res += val[roman_string[c]]
+            else:
+                res -= val[roman_string[c]]
+            p = val[roman_string[c]]
+    return res

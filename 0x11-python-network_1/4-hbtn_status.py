@@ -4,7 +4,7 @@ import requests
 
 
 def getStatus():
-    req = requests.get('https://intranet.hbtn.io/status')
+    req = requests.get('https://alx-intranet.hbtn.io/status')
     content = req.text
 
     print("Body response:")

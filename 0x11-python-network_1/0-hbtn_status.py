@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 """Python script that fetches"""
 import urllib.request
-
-
 def getStatus():
     """a"""
-    with urllib.request.urlopen('https://intranet.hbtn.io/status') as res:
+    with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as res:
         content = res.read()
         type_content = type(content)
         print("Body response:")

@@ -1,5 +1,3 @@
 #!/bin/bash
-
-# sends a request to a URL passed as an argument
-
-curl -sI -w '%{response_code}' "$1" -o /dev/null
+# Script that sends a requests to a URL argument, displays onyl the status code of the response
+curl -s -o /dev/null -w "%{http_code}" $1

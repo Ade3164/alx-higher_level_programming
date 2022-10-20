@@ -1,5 +1,3 @@
-able File  20 lines (18 sloc)  584 Bytes
-
 #!/usr/bin/node
 
 const request = require('request');
